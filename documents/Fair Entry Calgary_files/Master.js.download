@@ -1,0 +1,47 @@
+﻿(function (Master, $, undefined) {
+    Master.lblTitle;
+    Master.lblBody;
+    Master.divModal;
+
+    Master.BeginRequest = function () {
+        $(".btn-sm").attr("disabled", "disabled");
+    };
+
+    Master.EndRequest = function () {
+        $(".btn-sm").removeAttr("disabled");
+    };
+
+    Master.CloseAllModals = function () {
+        $(".modal").modal("hide");
+    };
+
+    //    Master.ShowMessage = function (title, message) {
+    //        $("#" + Master.lblTitle).html(title);
+    //        $("#" + Master.lblBody).html(message);
+    //        $("#" + Master.divModal).modal("show");
+
+    //        setTimeout(function () {
+    //            $("#btnOkay").focus()
+    //        }, 500);
+    //    };
+
+    Master.Focus = function (controlId) {
+        $("#" + controlId).focus();
+    };
+
+    Master.ShowLoading = function () {
+        $("#divLoadingModal").modal("show");
+    };
+
+    Master.ShowModalAlert = function () {
+        $("#divModalAlert").modal("show");
+    };
+
+    Master.ShowModalConfirm = function () {
+        $("#divModalConfirm").modal("show");
+    };
+
+    Master.ModalConfirmOkClick = function (controlId) {
+        $("#" + controlId).click();
+    };
+} (window.Master = window.Master || {}, jQuery));

@@ -1,0 +1,148 @@
+// WebTrends SmartSource Data Collector Tag v10.4.23
+// Copyright (c) 2016 Webtrends Inc.  All rights reserved.
+// Tag Builder Version: 4.1.3.5
+// Created: 2016.01.13
+
+// Javascript: WTCalgaryca.load.js 
+// selects the data source based on the site domai
+// Created By: The City of Calgary
+// Developed By: Aamina Javed / Stephen Dawes
+// Contact: Itmeasures@calgary.ca
+// Created: March 3, 2020
+// Created by making a copy of the WTCalgaryca.load.js script and then changing the DCSIDs accordingly.
+//
+
+var srcpath = null;
+
+if (document.currentScript) {
+   srcpath = document.currentScript.src; 
+}
+else { 
+    var scripts = document.getElementsByTagName('script');
+    srcpath = scripts[scripts.length - 1].src;
+}
+
+var wtd = window.location.hostname.toLowerCase();
+var cocSite = getDCSID(wtd);  
+
+window.webtrendsAsyncInit=function(){
+    var dcs=new Webtrends.dcs().init({
+        dcsid:cocSite.dcsid,
+        domain:cocSite.domain,
+        timezone:"-7",
+        i18n:true,
+        adimpressions:true,
+        adsparam:"WT.ac",
+        offsite:true,
+        download:true,
+        downloadtypes:"xls,xlsx,doc,docx,pdf,txt,csv,ppt,pptx,zip,mpeg,mp3,mp4,avi,wmv,flv,swf,zip,gzip,rar",
+        anchor:true,
+    rightclick:true,
+        javascript: true,
+        metanames:"DC.creator",
+        //onsitedoms:wt_fpcdom,
+//	onsitedoms:new RegExp("\.calgary\.ca$|^calgary\.ca$|\.?cocnmp\.com$|\.?calgarytransit\.com$|\.?calgarypolice\.ca$|\.gov\.calgary\.ab\.ca$"),
+        onsitedoms: new RegExp("\.calgary\.ca$|^calgary\.ca$|\.?cocnmp\.com$|\.?calgarytransit\.com$|\.?calgarypolice\.ca$|\.gov\.calgary\.ab\.ca$|\.video\.isilive\.ca$"),
+        fpcdom:".calgary.ca",
+        plugins:{
+            facebook:{src:"//s.webtrends.com/js/webtrends.fb.js"},
+            yt:{src:"//s.webtrends.com/js/webtrends.yt.js", dcsid: cocSite.dcsid}
+        }
+        }).track();
+};
+(function(){
+    var s=document.createElement("script"); s.async=true; s.src="//s.webtrends.com/js/webtrends.min.js";    
+    var s2=document.getElementsByTagName("script")[0]; s2.parentNode.insertBefore(s,s2);
+}());
+// function section: added by The City of Calgary
+//
+function getDCSID(COCdomain) {
+  var pDom = 'log.calgary.ca';
+  var tDom = 'logtest.calgary.ca';
+if (srcpath.indexOf('www1test') >= 0) {
+   tDom = 'logtest.calgary.ca';
+}
+else { 
+   tDom = 'log.calgary.ca';
+}
+  var cocEnv = COCdomain;
+  var cocDCSID = {
+    'test': {
+                      dcsid: 'dcs1zigrf000004j1x61p6itn_9q3y', 
+                      type: 'T', 
+                      domain: tDom,
+		      url: COCdomain,
+		      src: srcpath
+                      },  // Test
+    'www.calgary.ca': {
+                      dcsid:'dcsm893g910000gc8z36zwftn_7z1i', 
+                      type: 'P', 
+                      domain: pDom,
+		      url: COCdomain,
+                      src: srcpath
+                      },   // Production
+    'calgary.ca':     {
+                      dcsid:'dcsm893g910000gc8z36zwftn_7z1i', 
+                      type: 'P', 
+                      domain: pDom,
+		      url: COCdomain,
+		      src: srcpath
+                      },   // Production
+    'default':        {
+                      dcsid:'dcsclozjc00000gcsq2zkoetn_8u3e', 
+                      type: 'P', 
+                      domain: pDom,
+		      url: COCdomain,
+                      src: srcpath
+                      }   // Catchall      
+   };
+//    if (((COCdomain.indexOf('dev') >= 0) || (COCdomain.indexOf('sit') >= 0) || (COCdomain.indexOf('test') >= 0) || (COCdomain.indexOf('uat') >= 0))) {
+//    if (((COCdomain.indexOf('dev') >= 0) || (COCdomain.indexOf('test') >= 0) || (COCdomain.indexOf('uat') >= 0))) {
+    if (((COCdomain.indexOf('test') >= 0) || (COCdomain.indexOf('uat') >= 0))) {
+       cocEnv = 'test'
+    }
+    if (srcpath.indexOf('www1test') >= 0) {
+        cocEnv = 'test';
+    } 
+  return cocDCSID[cocEnv] || cocDCSID['default'];
+}
+//
+function dcsAction(creators, title, action) {
+  if (window.Webtrends) {
+    window.Webtrends.multiTrack({
+       argsa: ['DCSext.meta_dc.creator', creators, 'WT.ti', title, 'DCSext.W_action', action, 'WT.dl', '1']
+     })
+  }
+}
+//
+function dcsScenario(creators, title, scenario, step, close) {
+    if (window.Webtrends) {
+	window.Webtrends.multiTrack({argsa: ['DCSext.meta_dc.creator', creators, 
+						'WT.ti', title, 
+						'WT.si_n', scenario,
+						'WT.si_p', step, 
+						'WT.si_cs', close,
+						'WT.dl', '0']
+				});                     
+ }
+}
+//creators - The  business unit
+//title - The application name
+//scenario - The  scenario name
+//step - The step name
+//close - used to define the last step in the scenario. (0 = not last step. 1 = last step)
+// All parameters must be assigned a value, a null value will cause an error when calling dcsScenario.
+//
+function dcsBot(creators, title, action, callingurl) {
+    if (window.Webtrends) {
+        window.Webtrends.multiTrack({
+            argsa: ['DCSext.meta_dc.creator', creators, 'WT.ti', title, 'DCSext.W_action', action, 'WT.dl', 'B0', 'DCSext.W_Callingurl', callingurl]
+        })
+    }
+}
+//creators - The  business unit
+//title - The application name or page the Bot is located on
+//action - The Bot name
+// callingurl - the URL of the calling page 
+// All parameters must be assigned a value, a null value will cause an error when calling dcsBot.
+//

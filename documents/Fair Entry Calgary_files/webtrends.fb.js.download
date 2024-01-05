@@ -1,0 +1,20 @@
+/*
+	Copyright (c) 2012 Webtrends, Inc.
+	Facebook App Plugin v10.2.23
+  
+	The Facebook App Plugin was deprecated, please remove this code from your site
+*/
+
+(function (_window, _document) {
+    if (!_window.Webtrends)
+        return;
+
+    function decom () {
+			console.log("Webtrends Facebook App plugin has been deprecated, please remove this tagging from your site.");
+    };
+
+    /*register the plugin and pass our callback*/
+    Webtrends.registerPlugin('facebook', decom);
+
+})(window, window.document);
+

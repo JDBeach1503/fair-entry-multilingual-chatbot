@@ -1,0 +1,346 @@
+//************************************************************
+// This file contains the shared Java Script functions for
+// the application.
+//************************************************************
+
+//************************************************************
+// Function:     CalculateOffset
+// Created:      2006/01
+// Author:       Desimir Stanojevic
+// Description:  Calculates the position of the sender control.
+//               The browser is assumed to be IE.
+//************************************************************
+function CalculateOffset(senderControl, positionType) {
+    var positionValue = 0;
+
+    // top
+    if (positionType == 'Top') {
+        positionValue = senderControl.offsetTop;
+
+        if (senderControl.offsetParent != null) {
+            positionValue += CalculateOffset(senderControl.offsetParent, positionType);
+        }
+    }
+    // left
+    else {
+        positionValue = senderControl.offsetLeft;
+
+        if (senderControl.offsetParent != null) {
+            positionValue += CalculateOffset(senderControl.offsetParent, positionType);
+        }
+    }
+
+    return positionValue;
+}
+
+//************************************************************
+// Function:     OpenCalendar
+// Created:      29/03/2004
+// Author:       Blair Whitford
+// Description:  Opens the calendar form with the input
+//				 features. The field name is the name of the
+//				 control to write to. Top and Left are the
+//				 screen coordinates for the top left corner
+//				 of the calendar.
+// Parameters:
+//              fieldName: The name of the field on the calling page to return the date to.
+//              top: The top position.
+//              left: The left position.
+//************************************************************
+function OpenCalendar(fieldName, top, left) {
+    var currentForm;
+    var currentDate;
+    var features;
+
+    // set the window attributes
+    // defaults: width=220, height=210, resizable=0, scrollbars=0
+    currentDate = eval('document.all.' + fieldName + '.value');
+    features = "top=" + top + ",left=" + left + ",width=220,height=210,resizable=0,scrollbars=0";
+
+    // open the calendar
+    currentForm = window.open('../UserControls/Calendar/Calendar.aspx?fieldName=' + fieldName + '&InDate=' + currentDate, 'Calendar', features);
+    currentForm.focus();
+    return false;
+}
+
+//************************************************************
+// Function:     OpenCalendarModal
+// Created:      2006/01
+// Author:       Desimir Stanojevic
+// Description:  Opens the calendar form and shows it modally.
+//               This function takes as an input parameter,
+//               the control into which the resulting date is
+//               copied. The browser is assumed to be IE.
+//************************************************************
+function OpenCalendarModal(inFieldControl, senderControl) {
+    var features;
+    var date = inFieldControl.value;
+    var leftPosition = senderControl.document.parentWindow.screenLeft + CalculateOffset(senderControl, 'Left');
+    var topPosition = senderControl.document.parentWindow.screenTop + CalculateOffset(senderControl, 'Top');
+    var returnValue;
+
+    // set the window attributes
+    // defaults: width=220, height=210, resizable=0, scrollbars=0
+    features = "dialogTop:" + topPosition + "px; dialogLeft:" + leftPosition + "px; " +
+                  "dialogWidth:220px; dialogHeight:210px; resizable:no; scroll:no; help:no; status:no;";
+
+    // open the calendar modally
+    returnValue = window.showModalDialog('../UserControls/Calendar/Calendar.aspx?InDate=' + date, 'Calendar', features);
+
+    // assign the date selected in the calendar
+    if (returnValue != null) {
+        inFieldControl.value = returnValue;
+    }
+
+    return false;
+}
+
+//************************************************************
+// Function:     OpenForm
+// Created:      21/08/2003
+// Author:       Blair Whitford
+// Description:  Opens the specified form with the input
+//				 features. '_blank' is used in window.open
+//				 to ensure that each call to this function
+//				 opens the form is a new window.
+// Parameters:   Input:  formName: the name of the form to open
+//						 top, left, width, height: dimensions in px
+//						 resizable: true or false (0 or 1)
+//                       scrollBars: true or false (0 or 1)
+//               Output: NA
+//************************************************************
+function OpenForm(formName, top, left, width, height, resizable, scrollBars) {
+    var currentForm;
+    var features;
+
+    // set the window attributes
+    features = "top=" + top + ",left=" + left + ",width=" + width + ",height=" + height;
+    features = features + ",resizable=" + resizable + ",scrollbars=" + scrollBars;
+
+    // open the form in a new window
+    currentForm = window.open(formName, '_blank', features);
+    currentForm.focus();
+    return false;
+}
+
+//************************************************************
+// Function:     OpenFormSameWindow
+// Created:      29/06/2006
+// Author:       Blair Whitford
+// Description:  Opens the specified form with the input
+//				 features. 'myForm' is used in window.open
+//				 to ensure that each call to this function opens
+//				 the form in the same window.
+// Parameters:   Input:  formName: the name of the form to open
+//						 top, left, width, height: dimensions in px
+//						 resizable: true or false (0 or 1)
+//                       scrollBars: true or false (0 or 1)
+//               Output: NA
+//************************************************************
+function OpenFormSameWindow(formName, top, left, width, height, resizable, scrollBars) {
+    var currentForm;
+    var features;
+
+    // set the window attributes
+    features = "top=" + top + ",left=" + left + ",width=" + width + ",height=" + height;
+    features = features + ",resizable=" + resizable + ",scrollbars=" + scrollBars;
+
+    // open the form in the same window
+    currentForm = window.open(formName, 'myForm', features);
+    currentForm.focus();
+    return false;
+}
+
+//************************************************************
+// Function:     OpenLookup
+// Created:      2004/09/08
+// Author:       D Listoe
+// Description:  Opens the lookup form with the input table and field.
+// Parameters:   Input:  inTable, inField
+//               Output: False (no postback)
+//************************************************************
+function OpenLookup(inTable, inField) {
+    var currentForm;
+    var features;
+
+    features = "top=150,left=200,width=333,height=333,resizable=1,scrollbars=1";
+    currentForm = window.open('LookupPopup.aspx?inTable=' + inTable + '&inField=' + inField, '_blank', features);
+    currentForm.focus();
+    return false;
+}
+
+//************************************************************
+// Function:     OpenProgress
+// Created:      2004/10/26
+// Author:       Doug Listoe
+// Description:  Opens the progress form and passes in the session id.
+// Parameters:   SessionID: the current session id.
+//************************************************************
+function OpenProgress(sessionID) {
+    var currentForm;
+    var features;
+
+    // set the window attributes
+    features = "top=200,left=400,width=300,height=80,resizable=0,scrollbars=0,menubar=0";
+
+    // open the window
+    currentForm = window.open('ProgressHandler.aspx?SessionID=' + sessionID, '_blank', features);
+    currentForm.focus();
+    return true;
+}
+
+//************************************************************
+// Function:     OpenWebPageModal
+// Created:      14/11/2012
+// Author:       Blair Whitford
+// Description:  This function opens the web page for the
+//               input url and shows it modally in a dialog.
+//               The sender control provides a screen position
+//               which is used to position the dialog on the
+//               screen.
+//************************************************************
+function OpenWebPageModal(url, senderControl) {
+    var strFeatures;
+    var topPosition = senderControl.document.parentWindow.screenTop + CalculateOffset(senderControl, 'Top');
+    var leftPosition = senderControl.document.parentWindow.screenLeft + CalculateOffset(senderControl, 'Left');
+    var returnValue;
+
+    // setup the dialog features
+    strFeatures = "dialogTop:" + topPosition + "px; dialogLeft:" + (leftPosition + 150) + "px; " +
+                  "dialogWidth:900px; dialogHeight:570px; resizable:no; scroll:no; help:no; status:no;";
+
+    // open the dialog
+    returnValue = window.showModalDialog(url, '', strFeatures);
+
+    // return success
+    return false;
+}
+
+//************************************************************
+// Function:    PageControlValuesChanged
+// Author:      Blair Whitford
+// Description: This function checks for any control value changes on a page.
+//              If changes were made, a message is displayed prompting the user to save them before leaving the page.
+//              This method requires a hidden textbox 'txtPageControlValues' which contains
+//              the previously saved values for all page controls in a '|' delimited string.
+// Parameters:
+//              controlsToNotCheck: The list of controls whose values will not be checked for changes.
+//                                  This must be a '|' delimited list, e.g. control1|control2|...|controlx.
+//              message: the message to display if the control values have changed.
+//************************************************************
+function PageControlValuesChanged(controlsToNotCheck, message) {
+    var activeElement = document.activeElement.id;
+
+    if (activeElement == '') {
+        activeElement = 'An active element was not found.';
+    }
+
+    if (activeElement.lastIndexOf('_') != -1) {
+        activeElement = activeElement.substr(activeElement.lastIndexOf('_') + 1);
+    }
+
+    // compare the saved control values with the current control values
+    // display a message if they are not the same
+    if (document.forms[0].txtPageControlValues.value != PageControlValuesRetrieve()) {
+        if (controlsToNotCheck.indexOf(activeElement) == -1) {
+            event.returnValue = message;
+        }
+    }
+}
+
+//************************************************************
+// Function:    PageControlValuesRetrieve
+// Date:        2013/03/26
+// Author:      Blair Whitford
+// Description: This function retrieves the current values for all of the page's controls.
+//              The returned string is a '|' delimited list of values.
+//************************************************************
+function PageControlValuesRetrieve() {
+    var currentValues = '';
+    var form = window.document.forms[0];
+
+    // retrieve all current values from the form's controls and save them in a '|' delimited list
+    for (var i = 0; i < form.elements.length; i++) {
+        var elementType = form.elements[i].type;
+        if (elementType != 'submit' && elementType != 'hidden') {
+            if (elementType == 'checkbox' || elementType == 'radio') {
+                currentValues += form.elements[i].checked + '|';
+            }
+            else {
+                currentValues += form.elements[i].value + '|';
+            }
+        }
+    }
+
+    // return the current values
+    return currentValues;
+}
+
+//************************************************************
+// Function:     SetFocus
+// Created:      2004/06/01
+// Author:       D Listoe
+// Description:  Set focus to specified field; assumes IE.
+// Parameters:   fieldName: the name of the field to set focus on.
+//************************************************************
+function SetFocus(fieldName) {
+    var field = eval('document.all.' + fieldName);
+    if (!field.disabled) field.focus();
+}
+
+//************************************************************
+// Function: TrapKeys
+// Created by Janus Kamp Hansen - http://www.kamp-hansen.dk
+// Description: Wait for 'Enter' key; simulate inputButton click.
+//************************************************************
+function TrapKeys(inputButton) {
+    if (document.all) {
+        if (event.keyCode == 13) {
+            event.returnValue = false;
+            event.cancel = true;
+            inputButton.click();
+        }
+    }
+}
+
+/////////////////////////////////////////////////
+// SAMS additions
+
+function ShowModal(modalName) {
+    $(modalName).modal('show');
+}
+
+function HideModal(modalName) {
+    $(modalName).modal('hide');
+}
+
+// This function will resize a Telerik RadGrid so that its height reaches to the footer.
+function ResizeGridToFit(gridId) {
+    // Check if grid is being rendered on page
+    if ($("#" + gridId).position() == undefined) {
+        return;
+    }
+    
+    var winHeight = $(window).height();
+    var elementTop = $("#" + gridId).position().top;
+    var height = winHeight - elementTop - 200;
+
+    if (height < 300) {
+        height = 300;
+    }
+
+    var scrollArea = document.getElementById(gridId + "_GridData");
+
+    if (!scrollArea) {
+        return;
+    }
+
+    scrollArea.style.height = height + "px";
+
+    if ($find(gridId).ClientSettings.Scrolling.UseStaticHeaders) {
+        var header = document.getElementById(gridId + "_GridHeader");
+        scrollArea.style.height = height - header.offsetHeight + "px";
+    }
+
+    $find(gridId).repaint();
+}

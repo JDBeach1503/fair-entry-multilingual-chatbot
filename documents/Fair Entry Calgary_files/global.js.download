@@ -1,0 +1,18 @@
+﻿function submitOnce(button, text, groupName) {
+    if (typeof (Page_ClientValidate) === 'function') {
+        if (Page_ClientValidate(groupName) === false) {
+            return false;
+        }
+    }
+
+    if (button.getAttribute('type') === 'button') {
+        button.disabled = true;
+        button.value = text;
+    }
+
+    return true;
+}
+
+function CapitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

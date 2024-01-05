@@ -1,0 +1,446 @@
+﻿.ControlTextRequired
+{
+    color: Red;
+    font-size: small;
+    font-weight: normal;
+    vertical-align: top;
+}
+
+.MasterPageCopyright
+{
+    color: Black;
+    font-size: small;
+    font-weight: normal;
+}
+
+.MasterPageFooter
+{
+    background-color: #8a764d;
+}
+
+.MasterPageTitle
+{
+    color: #fffff8;
+    background-color: #770000;
+    border-color: #770000;
+    font-weight: normal;
+}
+
+.MasterPageUserAndPermissions
+{
+    background-color: Transparent;
+    color: Black;
+    font-size: x-small;
+    font-weight: normal;
+}
+
+.btn-file
+{
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file]
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+
+input[readonly]
+{
+    background-color: white !important;
+    cursor: text !important;
+}
+
+.ProgramPeriod
+{
+    color: White;
+    border-radius: 4px;
+    border: 1px solid;
+    min-width: 75px;
+    min-height: 16px;
+    text-align: center;
+    display: inline-block;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ProgramPeriodCurrent
+{
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ProgramPeriodFuture
+{
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ProgramPeriodPast
+{
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.block-indent
+{
+    display: inline-block;
+    margin-left: 1em;
+}
+
+/* styles for progress bar */
+.progress-title 
+{
+    color: #c8102e;
+    text-align:center;
+    font-weight: bold;
+}
+.progress-description
+{
+    font-size: 8pt;
+    text-align:center;
+}
+.progress-step 
+{
+    border-radius: 5px;
+    padding-top:2px;
+    padding-bottom:2px;
+}
+.progress-step.active
+{
+    background-color: #C8102E;
+    color: White;
+}
+.progress-step.active.progress-step > .progress-description
+{
+    color: White;
+}
+.progress-step.active.progress-step > .progress-title
+{
+    color: White;
+}
+.progress-step.active ~ .progress-step
+{
+        
+}
+.progress-step.active ~ .progress-step > .progress-description
+{
+    color: #6f7277;
+}
+.progress-step.active ~ .progress-step > .progress-title
+{
+    color: #6f7277;
+}
+
+.progress-step.disabled
+{
+    background-color: #999999;
+    color: White;
+}
+.progress-step.disabled.progress-step > .progress-description
+{
+    color: White;
+}
+.progress-step.disabled.progress-step > .progress-title
+{
+    color: White;
+}
+
+/* Instruction box */
+.instruction 
+{
+    border: 4px solid #0057B8;
+    border-left-color: #0057B8;
+    border-left-width: 36px;
+    background-color: #0057B8;
+    margin-bottom: 5px;
+}
+.instruction-icon
+{
+    color: white;
+    margin-left: -4.4rem;
+    padding: 1.8rem;
+    padding-top: 0;
+    float:left;
+}
+.instruction-body 
+{
+    padding: 5px;
+    background-color: White;
+}
+.instruction-title 
+{
+    color: #0057B8;
+}
+
+/* Program group */
+
+.program-group 
+{
+    border:4px solid #4b4f55;
+    margin-bottom: 5px;
+}
+.program-group-title
+{
+    color: #f6f6f6;
+    background-color:#4b4f55;
+    font-weight: bold;
+}
+.program-group-body
+{
+    padding: 5px;
+}
+/*! 
+* This style overrides the default bootstrap behaviour
+* Note: this style does not seem to be obeyed in IE10
+*/
+
+.table tbody > tr > td.vert-align
+{
+    vertical-align: middle;
+}
+
+.bg-aish-proof {
+  background-color: #E8F3F8;
+}
+
+.bg-noa-proof {
+  background-color: #DBE6EC;
+}
+
+.bg-rsw-proof {
+  background-color: #C2CBCE;
+}
+
+.bg-rsw-apply-proof {
+  background-color: #A4BCC2;
+}
+
+.table thead > tr > th.login-header 
+{
+    width: 33%;
+}
+
+.bg-household-program {
+    background-color: #DBE6EC;
+}
+
+/* Responsive Tables */
+/* Login.aspx */
+@media
+only screen and (max-width: 760px) {
+	/* Force table to not be like tables anymore */
+	#ProgramInfo table, #ProgramInfo thead, #ProgramInfo tbody, #ProgramInfo th, #ProgramInfo td, #ProgramInfo tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	#ProgramInfo thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	#ProgramInfo tr { border: 1px solid #ccc; }
+
+	#ProgramInfo td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+			
+		    
+	}
+
+	/*
+	Label the data
+	*/
+	#ProgramInfo td:nth-child(1) { font-weight: bold;}
+}
+
+/* Proof.aspx */
+@media
+only screen and (max-width: 760px) {
+
+	/* Force table to not be like tables anymore */
+	#Proof table, #Proof thead, #Proof tbody, #Proof th, #Proof td, #Proof tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	#Proof thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	#Proof tr { border: 1px solid #ccc; }
+
+	#Proof td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-top: 30px !important;
+		z-index: 100;
+		    
+	}
+
+	#Proof td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+		font-weight: bold;
+		z-index: -1;
+	}
+
+	/*
+	Label the data
+	*/
+	#Proof td:nth-of-type(1):before { content: "Select"; }
+	#Proof td:nth-of-type(2):before { content: "Proof of Income"; }
+	#Proof td:nth-of-type(3):before { content: "Hints"; }
+	#Proof tr:nth-child(5) td:nth-child(1):before { content: ""; }
+}
+
+/* Info dump */
+@media
+only screen and (max-width: 760px) {
+	/* Force table to not be like tables anymore */
+	#InfoRequired table, #InfoRequired thead, #InfoRequired tbody, #InfoRequired th, #InfoRequired td, #InfoRequired tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	#InfoRequired thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	#InfoRequired tr { border: 1px solid #ccc; }
+
+	#InfoRequired td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-top: 30px !important;
+		z-index: 100;
+		    
+	}
+
+	#InfoRequired td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+		font-weight: bold;
+		z-index: -1;
+	}
+
+	/*
+	Label the data
+	*/
+	#InfoRequired td:nth-of-type(1):before { content: "Program"; }
+	#InfoRequired td:nth-of-type(2):before { content: "For who?"; }
+	#InfoRequired td:nth-of-type(3):before { content: "What do I do?"; }
+}
+
+/* Info dump */
+@media
+only screen and (max-width: 760px) {
+	/* Force table to not be like tables anymore */
+	#LicoInfo table, #LicoInfo thead, #LicoInfo tbody, #LicoInfo th, #LicoInfo td, #LicoInfo tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	#LicoInfo thead tr:nth-child(2), #LicoInfo thead tr:nth-child(3)  {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	#LicoInfo tr { border: 1px solid #ccc; }
+
+	#LicoInfo td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-top: 30px !important;
+		z-index: 100;
+	    text-align: left;
+	}
+
+	#LicoInfo td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+	    white-space: nowrap;
+		font-weight: bold;
+		z-index: -1;
+	}
+
+	/*
+	Label the data
+	*/
+	#LicoInfo td:nth-of-type(1):before { content: "Size of Family"; }
+	#LicoInfo td:nth-of-type(2):before { content: "Total before tax income"; }
+}
+
+@media
+only screen and (max-width: 760px) 
+{
+    .additional-column 
+    {
+        display: none;
+        
+    }
+    
+    .button-column-sm {
+        width: 35px;
+    }
+}
+
+.button-column-edit-lg {
+    width: 60px;
+}
+.button-column-delete-lg {
+    width: 80px;
+}
+
+/* This class hides the changes for the Mobile Ticketing System until they are ready */
+.mts-hidden 
+{
+    
+}

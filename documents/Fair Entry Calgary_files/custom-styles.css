@@ -1,0 +1,763 @@
+/*Custom Styles for this website
+// Forced checkin
+Use this stylesheet to override the bootstrap css
+
+Changing Lives Landing Page custom CSS - Use this stylesheet to override the Bootstrap CSS
+
+    Table Of Contents
+
+    0. Custom Theme Colours
+    1. Base styles
+    2. Headings
+    3. Typography
+    4. Anchors
+    5. Navigation
+    6. Form Elements
+    7. General Classes
+    8. Template & Layout
+    9. Print
+    10. Media Queries
+    11. CSS Diagnostics
+*/
+
+/****************************************************************
+0. Custom Theme Colors
+****************************************************************/
+
+/****************************************************************
+1. Base styles
+****************************************************************/
+body
+{
+    font-size: 1.4rem;
+}
+.row
+{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+/****************************************************************
+2. Headings
+****************************************************************/
+h1.app-title
+{
+    font-size: 20pt;
+    margin-top: 10px;
+}
+h2
+{
+    font-size: 18pt;
+    font-weight: bold;
+    border-bottom: thin solid #ddd;
+}
+h3
+{
+    border-bottom: thin solid #ddd;
+    font-size: 16pt;
+}
+h3 [class*="btn"]
+{
+    top: -5px;
+    position: relative;
+}
+.modal-header
+{
+    background-color: #4b4f55;
+    color: white;
+}
+.modal-header .close
+{
+    color: white;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+}
+/****************************************************************
+3. Typography
+****************************************************************/
+.coc-secondary-blue
+{
+    color: #0085AD;
+}
+
+.approved
+{
+    color: #4C8C2B;
+}
+
+.awaiting
+{
+    color: #BDE49A;
+}
+
+.denied
+{
+    color: #c8102e;
+}
+
+.pending
+{
+    color: #642F6C;
+}
+
+.referred
+{
+    color: #E57200;
+}
+
+.coc-logo-link
+{
+    display: block;
+    width: 156px;
+    height: 74px;
+    float: left;
+}
+
+.coc-logo
+{
+    width: 156px;
+    height: 74px;
+}
+
+.coc-wrapper-header
+{
+    height: 63px;
+}
+
+footer
+{
+    padding: 5px;
+}
+
+.small-caps
+{
+    font-variant: small-caps;
+}
+/****************************************************************
+4. Anchors
+****************************************************************/
+a
+{
+    text-decoration: none;
+}
+a:visited
+{
+    color: #C8102E;
+}
+a:not([href])
+{
+    color: #C8102E;
+}
+.RadGrid_Bootstrap a
+{
+    color: #c8102e !important;
+}
+
+.breadcrumb a
+{
+    font-weight: bold;
+}
+.breadcrumb .active
+{
+    font-weight: bold;
+}
+/****************************************************************
+5. Navigation
+****************************************************************/
+.RadGrid_Bootstrap .rgPagerCell .rgNumPart a.rgCurrentPage
+{
+    background-color: #C8102E !important;
+    border: 1px solid #C8102E !important;
+    color: #fff !important;
+}
+
+div.RadGrid .rgPager .rgAdvPart
+{
+    display: none;
+}
+
+.RadTabStrip_Bootstrap .rtsLink
+{
+    color: #c8102e !important;
+    border-radius: 0px 0px 0px 0px !important;
+}
+
+.RadTabStripTop_Bootstrap .rtsLevel1 .rtsSelected
+{
+    border-top: 2px solid #c8102e !important;
+}
+.nav-pills > li.active > a
+{
+    background-color: #c8102e !important;
+}
+/****************************************************************
+6. Form Elements
+****************************************************************/
+.input-sm
+{
+    height: 28px !important;
+    padding: 5px 5px !important;
+    line-height: 1.5 !important;
+    border-radius: 3px;
+    font-size: 12px !important;
+}
+
+label
+{
+    font-size: 14px;
+}
+
+.dropdown-menu li
+{
+    list-style: none;
+}
+.standard-button
+{
+    width: 170px;
+}
+/****************************************************************
+7. General Classes
+****************************************************************/
+.date-field input[type=text]
+{
+    height: 28px !important;
+    font-size: 12px !important;
+}
+
+.date-field .rcCalPopup
+{
+    height: 26px !important;
+    background-position: -10px -4212px !important;
+}
+
+.date-form
+{
+    margin: 10px;
+}
+
+label.control-label span
+{
+    cursor: pointer;
+}
+
+.bg-green
+{
+    background-color: #4C8C2B;
+}
+
+.bg-white
+{
+    background-color: #FFF;
+}
+
+.black-bottom
+{
+    border-bottom: 1px solid #000;
+}
+
+.bs-callout
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    margin: 10px 0;
+    border: 1px solid #eee;
+    border-left-width: 10px;
+    border-radius: 3px;
+}
+.bs-callout h4
+{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child
+{
+    margin-bottom: 0;
+}
+.bs-callout code
+{
+    border-radius: 3px;
+}
+.bs-callout + .bs-callout
+{
+    margin-top: -5px;
+}
+.bs-callout-default
+{
+    border-left-color: #777;
+}
+.bs-callout-default h4
+{
+    color: #777;
+}
+.bs-callout-primary
+{
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4
+{
+    color: #428bca;
+}
+.bs-callout-success
+{
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4
+{
+    color: #5cb85c;
+}
+.bs-callout-danger
+{
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4
+{
+    color: #d9534f;
+}
+.bs-callout-warning
+{
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4
+{
+    color: #f0ad4e;
+}
+.bs-callout-info
+{
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4
+{
+    color: #5bc0de;
+}
+
+.bs-callout-approved
+{
+    border-left-color: #4C8C2B;
+}
+
+.bs-callout-pending
+{
+    border-left-color: #642F6C;
+}
+
+.bs-callout-denied
+{
+    border-left-color: #c8102e;
+}
+
+.bs-callout-expired
+{
+    border-left-color: #ffc600;
+}
+
+.draggable-item
+{
+    background-color: White; /*cursor: move;*/
+}
+.droppable-container
+{
+}
+.dragging
+{
+    border: 2px solid #c8102e;
+}
+.droppable-hover
+{
+    background-color: #dbdcdd;
+}
+
+.lico-over
+{
+    background-color: #C8102E !important;
+    color: White;
+}
+
+.lico-over-icon
+{
+    color: #C8102E;
+}
+
+.lico-under
+{
+    background-color: #4C8C2B !important;
+    color: White;
+}
+
+.lico-under-icon
+{
+    color: #4C8C2B;
+}
+
+.transit-deleted
+{
+    background-color: #f2dede !important;
+}
+
+.transit-unpostable
+{
+    background-color: #fcf8e3 !important;
+}
+/*
+.panel-heading.excluded
+{
+    background-color: #cccccc;
+}
+
+.panel-body.excluded
+{
+    background-color: #e5e5e5;
+}
+*/
+.excluded
+{
+    opacity: 0.5;
+}
+
+.LicoExpiryDateSearchResult
+{
+    color: White;
+    border-radius: 4px;
+    min-width: 75px;
+    min-height: 15px;
+    text-align: center;
+}
+
+.LicoApproved
+{
+    color: white !important;
+    background-color: #4C8C2B !important;
+}
+.LicoExpired
+{
+    color: black !important;
+    background-color: #ffc600 !important;
+}
+.LicoUnknown
+{
+    color: white !important;
+    background-color: #642F6C !important;
+}
+
+.LicoDenied
+{
+    color: white !important;
+    background-color: #c8102e !important;
+}
+
+.client-attribute
+{
+    font-size: 8pt;
+    font-weight: bold;
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.client-attribute.suspended
+{
+    background-color: #CE0F69;
+    color: White;
+}
+.client-attribute.mailout
+{
+    background-color: #005670;
+    color: White;
+}
+.client-attribute.grandfathered
+{
+    background-color: #FFC600;
+    color: black;
+}
+.client-attribute.online-user
+{
+    font-size: 8pt;
+    background-color: #44693D;
+    color: White;
+    margin-right: 5px;
+}
+.loader
+{
+    background-image: url('../img/loader.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 64px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+/****************************************************************
+8. Template & Layout
+****************************************************************/
+.alert
+{
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 8px 35px 8px 14px;
+    color: #916f35;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.alert-heading
+{
+    color: inherit;
+}
+.alert .close
+{
+    position: relative;
+    top: -6px;
+    right: -21px;
+    line-height: 18px;
+}
+.alert-attention
+{
+    color: #000000 !important;
+    background-color: #FEDB00 !important;
+    border-color: #000000 !important;
+}
+.alert-success
+{
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.alert-danger, .alert-error
+{
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+.alert-info
+{
+    color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+.alert-block
+{
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+.alert-block > p, .alert-block > ul
+{
+    margin-bottom: 0;
+}
+.alert-block p + p
+{
+    margin-top: 5px;
+}
+.close
+{
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #000000;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+.close:hover
+{
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+.breadcrumb
+{
+    padding-left: 0px;
+    margin-left: 0px;
+}
+.home-menu div
+{
+    margin-bottom: 5px;
+}
+.single-column-form
+{
+    max-width: 450px;
+}
+.narrow-form
+{
+    max-width: 900px;
+}
+.portfolio-item
+{
+    margin-bottom: 5px;
+    top: 2px;
+    left: 0px;
+}
+
+.form-group
+{
+    margin-bottom: 10px;
+}
+.margin-bottom-5
+{
+    margin-bottom: 5px;
+}
+.margin-top-10
+{
+    margin-top: 10px;
+}
+.margin-top-20
+{
+    margin-top: 20px;
+}
+.margin-left-50
+{
+    margin-left: 50px;
+}
+.margin-top-10-margin-bottom-10
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.pad-left-10
+{
+    padding-left: 10px;
+}
+.pad-right-10
+{
+    padding-right: 10px;
+}
+.pad-right-20
+{
+    padding-right: 20px;
+}
+.pad-left-5
+{
+    padding-left: 5px;
+}
+.pad-right-5
+{
+    padding-right: 5px;
+}
+.pad-bottom-5
+{
+    padding-bottom: 5px;
+}
+.pad-bottom-10
+{
+    padding-bottom: 10px;
+}
+.pad-top-10
+{
+    padding-top: 10px;
+}
+.pad-top-20
+{
+    padding-top: 20px;
+}
+.pad-5
+{
+    padding: 5px;
+}
+.pad-10
+{
+    padding: 10px;
+}
+.panel
+{
+    margin-bottom: 10px;
+}
+.panel-body
+{
+    padding: 5px 3px 5px 3px;
+}
+.panel-heading
+{
+    padding: 5px 10px 5px 10px;
+}
+.panel-footer
+{
+    padding: 5px 10px 5px 10px;
+}
+.panel-options-button
+{
+    padding: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.medium-width-button
+{
+    width: 200px;
+}
+.text-center
+{
+    text-align: center !important;
+}
+
+.side-menu
+{
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #dbdcdd;
+    overflow-y: scroll; /* Disable horizontal scroll */
+    overflow-x: hidden;
+    transition: 0.5s;
+    border-left: 1px solid #6f7277;
+}
+.lico-table td, th
+{
+    text-align: center !important;
+}
+/****************************************************************
+9. Print
+****************************************************************/
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    a[href]:after
+    {
+        content: "" !important;
+    }
+}
+/****************************************************************
+10. Media Queries
+****************************************************************/
+
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px)
+{
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px)
+{
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px)
+{
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px)
+{
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px)
+{
+}
+
+/****************************************************************
+11. CSS Diagnostics
+****************************************************************/
