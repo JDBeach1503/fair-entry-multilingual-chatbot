@@ -137,26 +137,5 @@ If you want to use the AzureOpenAI service instead, follow the above steps with 
 NOTE: Please delete the `data` folder after you finish interacting with the chatbot, so that it can be recreated on the next run. If the code is altered and `data` is not deleted, the responses returned can be strange.
 
 
-## A note about Gradio
-Gradio is an open-source Python package that allows for the creation of GUIs. It is the framwork that the Web UI version of the chatbot is built upon. However, Gradio contains a file (`frpc_windows_amd64_v0.2` on Windows) that WILL trigger antivirus software to detect `PUA:Win32/FRProxy`. "FR" stands for "Fast Reverse", and "PUA" stands for "Potentially Unwanted Application". `frpc_windows_amd64_v0.2` is needed to create a public link for a Gradio application, in order to allow it to be accessed by other, non-local users.
-
-This IS a false positive, but only for this specific case. The file COULD be used for malicious intent. A fast reverse proxy could allow someone to  connect from somewhere and access the program, and potentially other things as well.
-
-However, this application was unneccesary since I was only running the chatbot UI on a local URL, so I had Microsoft Defender remove the application. The chatbot still worked just fine locally without the FRProxy. Additionally, there was NEVER any intention nor SHOULD there be any intention to make this bot publically accessible since it is just a PoC and needs MAJOR refinments before even being considered to be made public. Nonetheless, I have outlined some potential steps below on how to deal with this PUA:
-
-1. Install the `gradio` Python package, then run an antivirus scan on your computer so that the PUA is detected. Once it is, have it removed (this is what I did, and as I mentioned above the program and UI ran just fine locally, which is what was desired from this PoC solution)
-2. Install the `gradio` Python package, then search it out in your files, and have your antivirus software scan the `gradio` package directly (on Windows, this involves right-clicking the file, clicking "Show more options", then clicking "Scan with Microsoft Defender) in order to remove the PUA. This could be a more direct approach and limit the need to fully scan your device, but I have not tested it.
-3. Locally whitelist `frpc_windows_amd64_v0.2` and reinstall the `gradio` Python package. Not a secure option but will prevent the antivirus software from flagging the file.
-4. Don't install the `gradio` Python package, and either interact with the chatbot through the CLI only or take the code and implement it in a different UI framework of choice that isn't Gradio.
-
-As I DO NOT want to make anyone feel that they are forced to do something they feel is not secure, `gradio` is NOT included in `requirements.txt`, so the command
-
-```
-pip install -r requirements.txt
-```
-
-can be run and `gradio` WILL NOT be installed. I leave it up the individual developer's discretion to use the interface and frameworks they are most comfortable with.
-
-
 ## License
 LangChain is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License, and in following with the conditions outlined the license and copyright notice are included in this repo
