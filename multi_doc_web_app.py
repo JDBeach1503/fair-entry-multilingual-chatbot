@@ -205,7 +205,7 @@ with gr.Blocks(theme=theme) as block:
         )
 
         #Submit button
-        submit = gr.Button(value="Submit", variant="secondary").style(
+        submit = gr.Button(value="Submit", variant="secondary").scale(
             full_width=False)
     
     #Sample questions that, when clicked on, will autopopulate the question textbox. User still has to click Submit themselves though
