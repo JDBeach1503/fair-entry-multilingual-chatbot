@@ -18,6 +18,7 @@ import gradio as gr
 load_dotenv('.env')
 
 os.environ['OCR_AGENT'] = 'tesseract'
+os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
 #Create a template for a string prompt. Supposed to give the chatbot a particular conversational style, in this case a multilingual chatbot for Fair Entry
 template = """You are an AI assistant for answering questions about the Fair Entry program provided by the City of Calgary and any of the programs from the 
