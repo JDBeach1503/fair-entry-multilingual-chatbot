@@ -17,6 +17,8 @@ import gradio as gr
 #load OpenAI API key from .env file
 load_dotenv('.env')
 
+os.environ['OCR_AGENT'] = 'tesseract'
+
 #Create a template for a string prompt. Supposed to give the chatbot a particular conversational style, in this case a multilingual chatbot for Fair Entry
 template = """You are an AI assistant for answering questions about the Fair Entry program provided by the City of Calgary and any of the programs from the 
 City of Calgary that are subsidized by Fair Entry.
